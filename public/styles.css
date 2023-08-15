@@ -1,0 +1,65 @@
+/* styles.css */
+
+/* Background Color */
+body {
+    background-color: #e4c5c5;
+    font-family: 'Your Font Name', sans-serif;
+  }
+  
+  /* Widget Titles */
+  .widget-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Input Fields */
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background-color: white;
+  }
+  
+  /* Buttons */
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn {
+    background-color: #4caf50;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .reset-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Result Text */
+  .result-text {
+    display: block;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #4caf50;
+  }
+  
+  /* Box Styling for Sections */
+  .section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  
+  

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link to your own CSS stylesheet -->
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Your+Font+Name&display=swap" rel="stylesheet">
+
+  <script src="./app.js"></script>
+  <title>Bootcamp Widgets with APIs</title>
+</head>
+<body x-data="container">
+  <main class="container">
+    <h1 class="section center-align">BOOTCAMP WIDGETS USING APIs</h1>
+
+    <!-- Word Game Widget -->
+    <div class="section center-align">
+      <h5 class="widget-title">Word Game Widget</h5>
+      <div class="row">
+        <div class="col s10 offset-s1" x-show="!answer1Show">
+          <input
+            class="input-field"
+            x-on:input="button1 = sentence === ''"
+            type="text"
+            placeholder="Enter a Sentence..."
+            x-model="sentence"
+          />
+        </div>
+        <div class="col s10 offset-s1" x-show="answer1Show">
+          <span
+            class="result-text"
+            x-html="longestWord"
+          ></span
+          ><br />
+          <span
+            class="result-text"
+            x-html="shortestWord"
+          ></span
+          ><br />
+          <span
+            class="result-text"
+            x-html="wordCount"
+          ></span>
+        </div>
+        <div class="col s12" style="margin: 0% 2dvh">
+          <button
+            class="btn submit-btn"
+            type="submit"
+            name="action"
+            x-bind:disabled="button1"
+            x-on:click="wordGame()"
+          >
+            Send
+          </button>
+          <button
+            class="btn reset-btn"
+            type="submit"
+            name="action"
+            x-on:click="reset1()"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Phone Bill Widget -->
+    <div class="section center-align">
+      <h5 class="widget-title">Phone Bill Widget</h5>
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <input
+            x-show="showBillInput"
+            class="input-field"
+            x-on:input="button2 = bill === ''"
+            type="text"
+            placeholder="Enter your total phone bill..."
+            x-model="bill"
+          />
+        </div>
+        <div class="col s10 offset-s1">
+          <span
+            class="result-text"
+            x-html="answer2"
+            x-show="showBill"
+          ></span>
+          <span
+            class="result-text"
+            x-html="prices"
+            x-show="showPrices"
+          ></span>
+          <span
+            class="result-text"
+            x-html="answer3"
+            x-show="showAnswer3"
+          ></span>
+          <input
+            class="input-field"
+            type="text"
+            placeholder="Enter the type of data you want to change."
+            x-model="type"
+            x-show="showInputs"
+          />
+          <input
+            class="input-field"
+            type="number"
+            placeholder="Enter the new price."
+            x-model="newPrice"
+            x-show="showInputs"
+          />
+        </div>
+        <div class="col s12" style="margin: 0% 2dvh">
+          <button
+            class="btn submit-btn"
+            type="submit"
+            name="action"
+            x-bind:disabled="button2"
+            x-on:click="totalPhoneBill()"
+          >
+            Total bill
+          </button>
+          <button
+            class="btn submit-btn"
+            type="submit"
+            name="action"
+            x-on:click="displayPrices()"
+            :disabled="displayButton"
+          >
+            show prices
+          </button>
+          <button
+            class="btn submit-btn"
+            type="submit"
+            name="action"
+            x-on:click="showChanges()"
+            x-show="showChangePrice"
+            :disabled="disableShowMenu"
+          >
+            Show menu to change price
+          </button>
+          <button
+            class="btn submit-btn"
+            type="submit"
+            name="action"
+            x-on:click="changePrice()"
+            x-show="submitChangePrice"
+            :disabled="type === '' || newPrice === '' || isNaN(newPrice)"
+          >
+            Send price changes
+          </button>
+          <button
+            class="btn reset-btn"
+            type="submit"
+            name="action"
+            x-on:click="reset3()"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+      
+    <!-- Enough Airtime Widget -->
+    <div class="section center-align">
+      <h5 class="widget-title">Enough Airtime Widget</h5>
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <input
+            class="input-field"
+            type="text"
+            placeholder="Enter projected data usage..."
+            x-model="dataUsage"
+            x-show="showLastInputs"
+          />
+        </div>
+        <div class="col s10 offset-s1">
+          <input
+            class="input-field"
+            type="number"
+            placeholder="Enter your airtime budget."
+            x-model="airtimeBudget"
+            x-show="showLastInputs"
+          />
+        </div>
+        <div class="col s10 offset-s1">
+          <span
+            class="result-text"
+            x-html="answer4"
+            x-show="showAnswer4"
+          ></span>
+        </div>
+        <div class="col s12" style="margin: 0% 2dvh">
+          <button
+            class="btn submit-btn"
+            type="submit"
+            name="action"
+            x-on:click="enoughAirtime()"
+            :disabled="dataUsage === '' || airtimeBudget === '' || isNaN(airtimeBudget)"
+          >
+            Send
+          </button>
+          <button
+            class="btn reset-btn"
+            type="submit"
+            name="action"
+            x-on:click="reset4()"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>
